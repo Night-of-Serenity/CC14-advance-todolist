@@ -117,17 +117,30 @@ function TodoContextProvider(props) {
     setTodosFilter(newTodo);
   };
 
-  const sharedObj = {
-    magic: 42,
-    todos: todos,
-    todosFilter: todosFilter,
-    addTodo: addTodo,
-    editTodo: editTodo,
-    deleteTodo: deleteTodo,
-    selectList: selectList,
-    searchTodo: searchTodo,
-  };
-  return <TodoContext.Provider value={sharedObj}>{props.children}</TodoContext.Provider>;
+  // const sharedObj = {
+  //   todos,
+  //   todosFilter,
+  //   addTodo,
+  //   editTodo,
+  //   deleteTodo,
+  //   selectList,
+  //   searchTodo,
+  // };
+  return (
+    <TodoContext.Provider
+      value={{
+        todos,
+        todosFilter,
+        addTodo,
+        editTodo,
+        deleteTodo,
+        selectList,
+        searchTodo,
+      }}
+    >
+      {props.children}
+    </TodoContext.Provider>
+  );
 }
 
 export default TodoContextProvider;

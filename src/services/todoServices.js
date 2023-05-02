@@ -1,10 +1,15 @@
-import axios from './axios';
+import MyAxios from "./axiosConfig";
+// import {MyAxios} from './axiosConfig';
 
-export const getAllTodo = async () => await axios.get('/todos');
+export const getAllTodos = async () => await MyAxios.get("/todos");
 
-export const createTodo = async (newTodoObj) => await axios.post('/todos', newTodoObj);
+export const createTodo = async (newTodoObj) => await MyAxios.post("/todos", newTodoObj);
 
-export const updateTodo = async (updateTodoObj) =>
-    await axios.put(`/todos/${updateTodoObj.id}`, updateTodoObj);
+export const updateTodo = async (updateTodoObj) => await MyAxios.put(`/todos/${updateTodoObj.id}`, updateTodoObj);
 
-export const deleteTodo = async (todoId) => await axios.delete(`todos/${todoId}`);
+export const deleteTodo = async (todoId) => await MyAxios.delete(`todos/${todoId}`);
+
+// Named Export
+// export {getAllTodo:getAllTodo, createTodo:createTodo, updateTodo:updateTodo,deleteTodo:deleteTo}
+
+// const TodoAPIServices =  {getAllTodo:getAllTodo, createTodo:createTodo, updateTodo:updateTodo,deleteTodo:deleteTo}

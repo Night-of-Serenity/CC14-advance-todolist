@@ -6,8 +6,8 @@ import ProfilePage from "../pages/ProfilePage";
 
 function App() {
   // return <LoginPage />;
-  // return <TodoPage />;
-  return <RegisterPage />;
+  return <TodoPage />;
+  // return <RegisterPage />;
 }
 
 export default App;

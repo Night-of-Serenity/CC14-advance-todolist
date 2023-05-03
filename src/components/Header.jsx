@@ -4,6 +4,7 @@ import { FaHome, FaSearch } from "react-icons/fa";
 import { Avatar } from "@mui/material";
 import UserPhoto from "../assets/user.jpg";
 import { useTodo } from "../hooks/useTodo";
+import { Link } from "react-router-dom";
 
 // Function Component
 export function Header() {
@@ -30,11 +31,23 @@ export function Header() {
         <span className="header__search__icon">
           <FaSearch />
         </span>
-        <input type="text" className="header__search__input" placeholder="search" onChange={handleChange} value={searchValue} />
+        <input
+          type="text"
+          className="header__search__input"
+          placeholder="search"
+          onChange={handleChange}
+          value={searchValue}
+        />
       </div>
       {/* Avatar */}
       <div>
-        <Avatar src={UserPhoto} alt="user-profile" sx={{ width: 45, height: 45, cursor: "pointer" }} />
+        <Link to="/profile">
+          <Avatar
+            src={UserPhoto}
+            alt="user-profile"
+            sx={{ width: 45, height: 45, cursor: "pointer" }}
+          />
+        </Link>
       </div>
     </header>
   );

@@ -1,10 +1,17 @@
-import { useState } from "react"; // *
-import { FaInbox, FaRegCalendar, FaRegCalendarAlt, FaChevronDown } from "react-icons/fa";
-import { Button } from "../components/Common/Button";
+import { useState } from "react"; // *1
 import { useTodo } from "../hooks/useTodo";
+import {
+  FaInbox,
+  FaRegCalendar,
+  FaRegCalendarAlt,
+  FaChevronDown,
+} from "react-icons/fa";
+import { Button } from "../components/Common/Button";
+import { useAuth } from "../hooks/useAuth";
 
 export function SideBar() {
-  const { selectList } = useTodo(); // *
+  const { selectList } = useTodo(); // *3
+  const { logout } = useAuth();
 
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -17,19 +24,28 @@ export function SideBar() {
     <aside className="sidebar">
       <section className="sidebar__generic">
         <ul className="generic__lists">
-          <li className={`${selectedIndex === 0 ? "active" : ""}`} onClick={() => handleSelectList(0)}>
+          <li
+            className={`${selectedIndex === 0 ? "active" : ""}`}
+            onClick={() => handleSelectList(0)}
+          >
             <span className="generic__lists--icon">
               <FaInbox />
             </span>
             <p>Inbox</p>
           </li>
-          <li className={`${selectedIndex === 1 ? "active" : ""}`} onClick={() => handleSelectList(1)}>
+          <li
+            className={`${selectedIndex === 1 ? "active" : ""}`}
+            onClick={() => handleSelectList(1)}
+          >
             <span className="generic__lists--icon">
               <FaRegCalendar />
             </span>
             Today
           </li>
-          <li className={`${selectedIndex === 2 ? "active" : ""}`} onClick={() => handleSelectList(2)}>
+          <li
+            className={`${selectedIndex === 2 ? "active" : ""}`}
+            onClick={() => handleSelectList(2)}
+          >
             <span className="generic__lists--icon">
               <FaRegCalendarAlt />
             </span>
@@ -76,6 +92,7 @@ export function SideBar() {
         <Button text={10} active={false} />
         <Button text={25} active={false} />
         <Button text={"Log out"} active={true} />
+        <button onClick={logout}>Logout</button>
       </section>
     </aside>
   );
